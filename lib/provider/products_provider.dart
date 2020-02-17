@@ -1,9 +1,9 @@
 import 'package:epasal/model/product.dart';
-import 'package:epasal/widgets/product_item.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ProductOverViewScreen extends StatelessWidget {
-  final List<Product> loadedProducts = [
+class Products with ChangeNotifier {
+  List<Product> _items = [
     Product(
         id: "first",
         title: "Watch",
@@ -36,29 +36,7 @@ class ProductOverViewScreen extends StatelessWidget {
         isFavourite: false),
   ];
 
-  static const String routeId = "/product_overview_screen";
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("E-pasal"),
-      ),
-      body: GridView.builder(
-          itemCount: loadedProducts.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            childAspectRatio: 3 / 2,
-          ),
-          itemBuilder: (ctx, i) {
-            return ProductItem(
-              loadedProducts[i].imageURL,
-              loadedProducts[i].title,
-              loadedProducts[i].id,
-            );
-          }),
-    );
+  List<Product> get items {
+    return [..._items];
   }
 }
