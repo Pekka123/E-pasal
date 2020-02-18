@@ -1,4 +1,4 @@
-import 'package:epasal/model/product.dart';
+import 'file:///C:/Users/him/AndroidStudioProjects/epasal/lib/provider/product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -38,5 +38,25 @@ class Products with ChangeNotifier {
 
   List<Product> get items {
     return [..._items];
+  }
+
+  Product findById(String id) {
+    return items.firstWhere((prod) {
+      return prod.id == id;
+    });
+  }
+
+  void addProduct() {
+    _items.add(
+      Product(
+          id: "first",
+          title: "OnePLus 8",
+          price: 88000,
+          description: "BEST PHONE ",
+          imageURL:
+              "https://i.gadgets360cdn.com/large/OnePlus_8_Render_Cashkaro_1570177447327.jpg",
+          isFavourite: false),
+    );
+    notifyListeners();
   }
 }
