@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'file:///C:/Users/him/AndroidStudioProjects/epasal/lib/provider/product.dart';
+import 'package:epasal/provider/product.dart';
 import 'package:epasal/screens/product_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +7,8 @@ import 'package:provider/provider.dart';
 class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(context);
+    final product = Provider.of<Product>(context, listen: false);
+    print("Build Created");
     return ClipRRect(
       borderRadius: BorderRadius.circular(10.0),
       child: GridTile(
@@ -29,14 +30,16 @@ class ProductItem extends StatelessWidget {
               product.title,
               textAlign: TextAlign.center,
             ),
-            leading: IconButton(
-              icon: product.isFavourite
-                  ? Icon(Icons.favorite)
-                  : Icon(Icons.favorite_border),
-              onPressed: () {
-                product.toggleIsFavourite();
-              },
-              color: Theme.of(context).accentColor,
+            leading: Consumer<Product>(
+              builder: (ctx, prod, child) => IconButton(
+                icon: prod.isFavourite
+                    ? Icon(Icons.favorite)
+                    : Icon(Icons.favorite_border),
+                onPressed: () {
+                  prod.toggleIsFavourite();
+                },
+                color: Theme.of(context).accentColor,
+              ),
             ),
             trailing: IconButton(
               icon: Icon(Icons.shopping_cart),
