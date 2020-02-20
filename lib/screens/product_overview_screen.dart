@@ -1,5 +1,7 @@
 import 'file:///C:/Users/him/AndroidStudioProjects/epasal/lib/provider/product.dart';
+import 'package:epasal/provider/cart_provider.dart';
 import 'package:epasal/provider/products_provider.dart';
+import 'package:epasal/screens/cart_screen.dart';
 import 'package:epasal/widgets/badge.dart';
 import 'package:epasal/widgets/product_grid.dart';
 import 'package:epasal/widgets/product_item.dart';
@@ -47,13 +49,19 @@ class _ProductOverViewScreenState extends State<ProductOverViewScreen> {
               )
             ],
           ),
-          Badge(
-            value: "0",
-            child: IconButton(
-              icon: Icon(Icons.shopping_cart),
-              onPressed: () {},
-            ),
-          )
+          Consumer<Cart>(
+              child: IconButton(
+                icon: Icon(Icons.shopping_cart),
+                onPressed: () {
+                  Navigator.pushNamed(context, CartScreen.routeId);
+                },
+              ),
+              builder: (_, cart, child) {
+                return Badge(
+                  child: child,
+                  value: cart.itemCount.toString(),
+                );
+              })
         ],
       ),
       body: ProductGrid(_showFavourites),
