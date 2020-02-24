@@ -1,10 +1,8 @@
-import 'file:///C:/Users/him/AndroidStudioProjects/epasal/lib/provider/product.dart';
 import 'package:epasal/provider/cart_provider.dart';
-import 'package:epasal/provider/products_provider.dart';
 import 'package:epasal/screens/cart_screen.dart';
+import 'package:epasal/widgets/app_drawer.dart';
 import 'package:epasal/widgets/badge.dart';
 import 'package:epasal/widgets/product_grid.dart';
-import 'package:epasal/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -65,6 +63,7 @@ class _ProductOverViewScreenState extends State<ProductOverViewScreen> {
         ],
       ),
       body: ProductGrid(_showFavourites),
+      drawer: AppDrawer(),
     );
   }
 }

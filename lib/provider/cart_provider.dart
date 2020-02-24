@@ -48,4 +48,25 @@ class Cart with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  //this is used to remove form the cart
+  void removeFromCart(String id) {
+    _items.remove(id);
+    notifyListeners();
+  }
+
+  //this is used to calculated total amount
+  double get totalAmount {
+    double total = 0.0;
+    _items.forEach((key, cartItem) {
+      total += cartItem.quantity * cartItem.price;
+    });
+    return total;
+  }
+
+  //this remove all items from cart
+  void clearCart() {
+    _items = {};
+    notifyListeners();
+  }
 }
