@@ -7,13 +7,14 @@ import 'package:provider/provider.dart';
 
 class CartScreen extends StatelessWidget {
   static const String routeId = "/cart_screen";
+
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
     final order = Provider.of<Orders>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Your cart"),
+        title: Text("Your Cart"),
       ),
       body: Column(
         children: <Widget>[
@@ -38,7 +39,7 @@ class CartScreen extends StatelessWidget {
                   ),
                   FlatButton(
                     child: Text(
-                      "ORDER NOW ",
+                      "ORDER NOW",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
@@ -55,7 +56,7 @@ class CartScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 40,
+            height: 10,
           ),
           Expanded(
             child: ListView.builder(

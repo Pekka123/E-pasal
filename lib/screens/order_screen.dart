@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class OrderScreen extends StatelessWidget {
-  static const String routeId = "/order_screen";
+  static const routeId = "/order_screen";
+
   @override
   Widget build(BuildContext context) {
     final orderData = Provider.of<Orders>(context);

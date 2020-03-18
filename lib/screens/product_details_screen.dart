@@ -9,9 +9,10 @@ class ProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context).settings.arguments as String;
-    //we get single product item from the provider
+    // we get single product item from the provider
     final loadedProduct =
         Provider.of<Products>(context, listen: false).findById(id);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(loadedProduct.title),
@@ -21,8 +22,10 @@ class ProductDetails extends StatelessWidget {
           children: <Widget>[
             Container(
               height: 300,
+              width: double.infinity,
               child: CachedNetworkImage(
                 imageUrl: loadedProduct.imageURL,
+                fit: BoxFit.cover,
               ),
             ),
             SizedBox(
@@ -42,7 +45,7 @@ class ProductDetails extends StatelessWidget {
               loadedProduct.description,
               textAlign: TextAlign.center,
               softWrap: true,
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 18.0),
             )
           ],
         ),

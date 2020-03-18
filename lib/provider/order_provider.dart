@@ -1,5 +1,4 @@
 import 'package:epasal/provider/cart_provider.dart';
-
 import 'package:flutter/material.dart';
 
 class OrderItem {
@@ -19,7 +18,7 @@ class Orders with ChangeNotifier {
   List<OrderItem> _orders = [];
 
   List<OrderItem> get orders {
-    return [...orders];
+    return [..._orders];
   }
 
   void addOrder(List<CartItem> cartProducts, double total) {
